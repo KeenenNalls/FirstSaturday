@@ -167,7 +167,7 @@ public class WriteLoops {
     // is less than “highestScore” and if it is, adds “currentScore” to
     // "runningScore"
     // and then sets “currentScore” to “gameNextScore()”
-    public int checkGameScore() {
+    public boolean checkGameScore() {
         int w = 0;
         int highestScore = 236;
         int currentScore = gameNextScore();
@@ -180,7 +180,7 @@ public class WriteLoops {
             w = w + 1;
             // each time through the inner loop
         }
-        return w; // >= 3;
+        return true; // >= 3;
     }
 
     // Rewrite the previous WHILE loop as a DO..WHILE loop.
@@ -192,12 +192,16 @@ public class WriteLoops {
         int runningScore = 0;
 
         // do your while loop here
-
+        do {
+            runningScore += currentScore;
+            currentScore = gameNextScore();
             // calling
             w = w + 1;
+
+        } while (runningScore < highestScore);
             // each time through the inner loop
 
-        return w >= 0;
+        return false; //w >= 0;
     }
 
     // Write a WHILE loop that checks “serverIsRunning()” and if true
